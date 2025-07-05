@@ -129,7 +129,7 @@
                                 </div>
                             </div>
 
-                            <form action="RegisterServlet" method="POST" class="needs-validation" novalidate>
+                            <form action="registerServlet" method="POST" class="needs-validation" novalidate>
                                 <!-- Personal Information -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
