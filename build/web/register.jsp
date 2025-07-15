@@ -7,14 +7,14 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Student Control Panel - Register</title>
+            <title>Coupon Management System - Register</title>
             <!-- Bootstrap CSS -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
             <!-- Bootstrap Icons -->
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
             <style>
                 body {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
                     min-height: 100vh;
                 }
 
@@ -26,17 +26,17 @@
                 }
 
                 .form-control:focus {
-                    border-color: #667eea;
-                    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+                    border-color: #ff6b6b;
+                    box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
                 }
 
                 .btn-register {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
                     border: none;
                 }
 
                 .btn-register:hover {
-                    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+                    background: linear-gradient(135deg, #ff5252 0%, #d84315 100%);
                 }
 
                 .step-indicator {
@@ -67,7 +67,7 @@
                 }
 
                 .step.active .step-number {
-                    background: #667eea;
+                    background: #ff6b6b;
                     color: white;
                 }
 
@@ -83,6 +83,13 @@
                     font-size: 0.875rem;
                     font-weight: bold;
                 }
+
+                .coupon-icon {
+                    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
             </style>
         </head>
 
@@ -90,7 +97,8 @@
             <!-- Navigation -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
                 <div class="container">
-                    <a class="navbar-brand" href="index.jsp"><i class="bi bi-mortarboard-fill me-2"></i>Student CP</a>
+                    <a class="navbar-brand" href="index.jsp"><i class="bi bi-ticket-perforated-fill me-2"></i>Coupon
+                        Management System</a>
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link" href="index.jsp">
                             <i class="bi bi-house me-1"></i>Home
@@ -108,16 +116,16 @@
                     <div class="col-md-8 col-lg-6">
                         <div class="register-card p-5">
                             <div class="text-center mb-4">
-                                <i class="bi bi-person-plus-fill text-primary" style="font-size: 3rem;"></i>
+                                <i class="bi bi-ticket-perforated-fill coupon-icon" style="font-size: 3rem;"></i>
                                 <h2 class="fw-bold mt-3 mb-2">Create Account</h2>
-                                <p class="text-muted">Join our student community today</p>
+                                <p class="text-muted">Join our coupon management platform</p>
                             </div>
 
                             <!-- Step Indicator -->
                             <div class="step-indicator">
                                 <div class="step active">
                                     <div class="step-number">1</div>
-                                    <div class="step-label mt-2">Personal Info</div>
+                                    <div class="step-label mt-2">Business Info</div>
                                 </div>
                                 <div class="step">
                                     <div class="step-number">2</div>
@@ -130,7 +138,7 @@
                             </div>
 
                             <form action="registerServlet" method="POST" class="needs-validation" novalidate>
-                                <!-- Personal Information -->
+                                <!-- Business Information -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="firstName" class="form-label">First Name</label>
@@ -161,7 +169,7 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Enter your email" required>
+                                            placeholder="Enter your business email" required>
                                         <div class="invalid-feedback">
                                             Please provide a valid email address.
                                         </div>
@@ -169,13 +177,13 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="studentId" class="form-label">Student ID</label>
+                                    <label for="studentId" class="form-label">Business ID</label>
                                     <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                                        <span class="input-group-text"><i class="bi bi-building"></i></span>
                                         <input type="text" class="form-control" id="studentId" name="studentId"
-                                            placeholder="Enter your student ID" required>
+                                            placeholder="Enter your business ID" required>
                                         <div class="invalid-feedback">
-                                            Please provide your student ID.
+                                            Please provide your business ID.
                                         </div>
                                     </div>
                                 </div>

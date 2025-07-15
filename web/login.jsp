@@ -7,14 +7,14 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Student Control Panel - Login</title>
+            <title>Coupon Management System - Login</title>
             <!-- Bootstrap CSS -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
             <!-- Bootstrap Icons -->
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
             <style>
                 body {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
                     min-height: 100vh;
                 }
 
@@ -26,17 +26,24 @@
                 }
 
                 .form-control:focus {
-                    border-color: #667eea;
-                    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+                    border-color: #ff6b6b;
+                    box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
                 }
 
                 .btn-login {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
                     border: none;
                 }
 
                 .btn-login:hover {
-                    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+                    background: linear-gradient(135deg, #ff5252 0%, #d84315 100%);
+                }
+
+                .coupon-icon {
+                    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
                 }
             </style>
         </head>
@@ -45,7 +52,8 @@
             <!-- Navigation -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
                 <div class="container">
-                    <a class="navbar-brand" href="index.jsp"><i class="bi bi-mortarboard-fill me-2"></i>Student CP</a>
+                    <a class="navbar-brand" href="index.jsp"><i class="bi bi-ticket-perforated-fill me-2"></i>Coupon
+                        Management System</a>
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link" href="index.jsp">
                             <i class="bi bi-house me-1"></i>Home
@@ -63,9 +71,9 @@
                     <div class="col-md-6 col-lg-5">
                         <div class="login-card p-5">
                             <div class="text-center mb-4">
-                                <i class="bi bi-mortarboard-fill text-primary" style="font-size: 3rem;"></i>
+                                <i class="bi bi-ticket-perforated-fill coupon-icon" style="font-size: 3rem;"></i>
                                 <h2 class="fw-bold mt-3 mb-2">Welcome Back!</h2>
-                                <p class="text-muted">Sign in to your account to continue</p>
+                                <p class="text-muted">Sign in to manage your coupons</p>
                             </div>
 
                             <form action="LoginServlet" method="POST" class="needs-validation" novalidate>

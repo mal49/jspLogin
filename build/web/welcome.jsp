@@ -1,307 +1,199 @@
-<%-- Document : welcome Created on : Jun 25, 2025, 11:00:46 AM Author : ikhmalhanif --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <%@page contentType="text/html" pageEncoding="UTF-8" %>
-        <!DOCTYPE html>
-        <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard - Coupon Management System</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <style>
+            body {
+                background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+                min-height: 100vh;
+            }
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Student Control Panel - Dashboard</title>
-            <!-- Bootstrap CSS -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-            <!-- Bootstrap Icons -->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-            <style>
-                body {
-                    background-color: #f8f9fa;
-                }
+            .dashboard-card {
+                backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 15px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                border: none;
+            }
 
-                .sidebar {
-                    min-height: 100vh;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                }
+            .action-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                cursor: pointer;
+                border: none;
+                background: white;
+            }
 
-                .sidebar .nav-link {
-                    color: rgba(255, 255, 255, 0.8);
-                    transition: all 0.3s ease;
-                }
+            .action-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            }
 
-                .sidebar .nav-link:hover,
-                .sidebar .nav-link.active {
-                    color: white;
-                    background-color: rgba(255, 255, 255, 0.1);
-                    border-radius: 8px;
-                }
+            .btn-primary-custom {
+                background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+                border: none;
+                color: white;
+            }
 
-                .main-content {
-                    min-height: 100vh;
-                }
+            .btn-primary-custom:hover {
+                background: linear-gradient(135deg, #ff5252 0%, #d84315 100%);
+                color: white;
+            }
 
-                .welcome-card {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white;
-                    border-radius: 15px;
-                }
+            .btn-outline-custom {
+                border: 2px solid #ff6b6b;
+                color: #ff6b6b;
+                background: transparent;
+            }
 
-                .stats-card {
-                    border-radius: 10px;
-                    transition: transform 0.3s ease;
-                }
+            .btn-outline-custom:hover {
+                background: #ff6b6b;
+                color: white;
+                border-color: #ff6b6b;
+            }
 
-                .stats-card:hover {
-                    transform: translateY(-5px);
-                }
+            .coupon-icon {
+                background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
 
-                .activity-item {
-                    border-left: 3px solid #667eea;
-                    padding-left: 1rem;
-                }
+            .stats-card {
+                background: white;
+                border-radius: 10px;
+                padding: 1.5rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
 
-                .navbar-brand {
-                    font-weight: bold;
-                }
-            </style>
-        </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="welcome.jsp">
+                    <i class="bi bi-ticket-perforated-fill me-2"></i>Coupon Management System
+                </a>
+                <div class="navbar-nav ms-auto">
+                    <a href="LogoutServlet" class="btn btn-outline-light">
+                        <i class="bi bi-box-arrow-right me-1"></i>Sign Out
+                    </a>
+                </div>
+            </div>
+        </nav>
 
-        <body>
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Sidebar -->
-                    <div class="col-md-3 col-lg-2 px-0">
-                        <div class="sidebar p-3">
-                            <div class="text-center mb-4">
-                                <i class="bi bi-mortarboard-fill text-white" style="font-size: 2.5rem;"></i>
-                                <h5 class="text-white mt-2 mb-0">Student CP</h5>
-                            </div>
+        <!-- Main Content -->
+        <div class="container py-5">
+            <!-- Welcome Header -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="dashboard-card p-5 text-center">
+                        <i class="bi bi-ticket-perforated-fill coupon-icon" style="font-size: 4rem;"></i>
+                        <h1 class="fw-bold mt-3 mb-2">Welcome to Your Dashboard</h1>
+                        <p class="lead text-muted">Manage your coupon campaigns and track performance</p>
+                    </div>
+                </div>
+            </div>
 
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item mb-2">
-                                    <a href="#" class="nav-link active">
-                                        <i class="bi bi-house-door me-2"></i>Dashboard
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-2">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-person me-2"></i>Profile
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-2">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-book me-2"></i>Courses
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-2">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-calendar-event me-2"></i>Schedule
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-2">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-graph-up me-2"></i>Grades
-                                    </a>
-                                </li>
-                                <li class="nav-item mb-2">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-gear me-2"></i>Settings
-                                    </a>
-                                </li>
-                            </ul>
+            <!-- Quick Stats -->
+            <div class="row mb-5">
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card">
+                        <i class="bi bi-ticket text-primary" style="font-size: 2rem;"></i>
+                        <h4 class="mt-2 mb-1">Total Coupons</h4>
+                        <h2 class="text-primary mb-0">--</h2>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card">
+                        <i class="bi bi-graph-up text-success" style="font-size: 2rem;"></i>
+                        <h4 class="mt-2 mb-1">Active Campaigns</h4>
+                        <h2 class="text-success mb-0">--</h2>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card">
+                        <i class="bi bi-people text-info" style="font-size: 2rem;"></i>
+                        <h4 class="mt-2 mb-1">Total Redeemed</h4>
+                        <h2 class="text-info mb-0">--</h2>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card">
+                        <i class="bi bi-currency-dollar text-warning" style="font-size: 2rem;"></i>
+                        <h4 class="mt-2 mb-1">Savings Given</h4>
+                        <h2 class="text-warning mb-0">$--</h2>
+                    </div>
+                </div>
+            </div>
 
-                            <hr class="text-white">
-
-                            <div class="mt-auto">
-                                <a href="LogoutServlet" class="nav-link text-white">
-                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
-                                </a>
+            <!-- Main Actions -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="action-card dashboard-card p-4 h-100"
+                        onclick="window.location.href='CouponServlet?action=list'">
+                        <div class="text-center">
+                            <i class="bi bi-list-ul" style="font-size: 3rem; color: #667eea;"></i>
+                            <h3 class="mt-3 mb-3">View All Coupons</h3>
+                            <p class="text-muted mb-4">Browse, edit, and manage your existing coupon campaigns</p>
+                            <div class="btn btn-outline-custom btn-lg">
+                                <i class="bi bi-eye me-2"></i>View Coupons
                             </div>
                         </div>
                     </div>
-
-                    <!-- Main Content -->
-                    <div class="col-md-9 col-lg-10">
-                        <div class="main-content p-4">
-                            <!-- Top Navigation -->
-                            <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow-sm mb-4">
-                                <div class="container-fluid">
-                                    <span class="navbar-brand mb-0 h1">Dashboard</span>
-                                    <div class="navbar-nav ms-auto">
-                                        <div class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                                                role="button" data-bs-toggle="dropdown">
-                                                <i class="bi bi-person-circle me-2" style="font-size: 1.5rem;"></i>
-                                                <span>
-                                                    <%= request.getAttribute("username") !=null ?
-                                                        request.getAttribute("username") : "Student" %>
-                                                </span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"><i
-                                                            class="bi bi-person me-2"></i>Profile</a></li>
-                                                <li><a class="dropdown-item" href="#"><i
-                                                            class="bi bi-gear me-2"></i>Settings</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="LogoutServlet"><i
-                                                            class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
-
-                            <!-- Welcome Section -->
-                            <div class="welcome-card p-4 mb-4">
-                                <div class="row align-items-center">
-                                    <div class="col-md-8">
-                                        <h2 class="fw-bold mb-2">Welcome back, <%= request.getAttribute("username")
-                                                !=null ? request.getAttribute("username") : "Student" %>!</h2>
-                                        <p class="mb-0 opacity-75">Ready to continue your learning journey? Check out
-                                            your latest updates and activities below.</p>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <i class="bi bi-emoji-smile" style="font-size: 4rem; opacity: 0.7;"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Quick Stats -->
-                            <div class="row mb-4">
-                                <div class="col-md-3 mb-3">
-                                    <div class="card stats-card border-0 shadow-sm">
-                                        <div class="card-body text-center">
-                                            <i class="bi bi-book text-primary" style="font-size: 2.5rem;"></i>
-                                            <h4 class="fw-bold mt-2 mb-1">6</h4>
-                                            <p class="text-muted mb-0">Active Courses</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card stats-card border-0 shadow-sm">
-                                        <div class="card-body text-center">
-                                            <i class="bi bi-calendar-check text-success" style="font-size: 2.5rem;"></i>
-                                            <h4 class="fw-bold mt-2 mb-1">4</h4>
-                                            <p class="text-muted mb-0">Assignments Due</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card stats-card border-0 shadow-sm">
-                                        <div class="card-body text-center">
-                                            <i class="bi bi-graph-up text-info" style="font-size: 2.5rem;"></i>
-                                            <h4 class="fw-bold mt-2 mb-1">3.7</h4>
-                                            <p class="text-muted mb-0">Current GPA</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <div class="card stats-card border-0 shadow-sm">
-                                        <div class="card-body text-center">
-                                            <i class="bi bi-trophy text-warning" style="font-size: 2.5rem;"></i>
-                                            <h4 class="fw-bold mt-2 mb-1">12</h4>
-                                            <p class="text-muted mb-0">Achievements</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Recent Activity & Upcoming Events -->
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="card border-0 shadow-sm">
-                                        <div class="card-header bg-transparent border-0">
-                                            <h5 class="fw-bold mb-0"><i class="bi bi-clock-history me-2"></i>Recent
-                                                Activity</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="activity-item mb-3">
-                                                <div class="d-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h6 class="mb-1">Submitted Math Assignment</h6>
-                                                        <p class="text-muted small mb-0">Advanced Calculus - Problem Set
-                                                            5</p>
-                                                    </div>
-                                                    <small class="text-muted">2h ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="activity-item mb-3">
-                                                <div class="d-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h6 class="mb-1">Attended Online Lecture</h6>
-                                                        <p class="text-muted small mb-0">Computer Science - Data
-                                                            Structures</p>
-                                                    </div>
-                                                    <small class="text-muted">1d ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="activity-item mb-0">
-                                                <div class="d-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h6 class="mb-1">Quiz Completed</h6>
-                                                        <p class="text-muted small mb-0">Physics - Quantum Mechanics</p>
-                                                    </div>
-                                                    <small class="text-muted">2d ago</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb-4">
-                                    <div class="card border-0 shadow-sm">
-                                        <div class="card-header bg-transparent border-0">
-                                            <h5 class="fw-bold mb-0"><i class="bi bi-calendar-event me-2"></i>Upcoming
-                                                Events</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3 p-2 bg-light rounded">
-                                                <div class="text-center me-3">
-                                                    <div class="bg-primary text-white rounded p-2">
-                                                        <div class="fw-bold">15</div>
-                                                        <div style="font-size: 0.75rem;">JAN</div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1">Midterm Exam</h6>
-                                                    <p class="text-muted small mb-0">Database Systems</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-3 p-2 bg-light rounded">
-                                                <div class="text-center me-3">
-                                                    <div class="bg-success text-white rounded p-2">
-                                                        <div class="fw-bold">18</div>
-                                                        <div style="font-size: 0.75rem;">JAN</div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1">Project Presentation</h6>
-                                                    <p class="text-muted small mb-0">Software Engineering</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-0 p-2 bg-light rounded">
-                                                <div class="text-center me-3">
-                                                    <div class="bg-warning text-white rounded p-2">
-                                                        <div class="fw-bold">22</div>
-                                                        <div style="font-size: 0.75rem;">JAN</div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1">Assignment Due</h6>
-                                                    <p class="text-muted small mb-0">Machine Learning</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="action-card dashboard-card p-4 h-100"
+                        onclick="window.location.href='CouponServlet?action=new'">
+                        <div class="text-center">
+                            <i class="bi bi-plus-circle" style="font-size: 3rem; color: #28a745;"></i>
+                            <h3 class="mt-3 mb-3">Create New Coupon</h3>
+                            <p class="text-muted mb-4">Design and launch a new coupon campaign for your business</p>
+                            <div class="btn btn-primary-custom btn-lg">
+                                <i class="bi bi-plus me-2"></i>Create Coupon
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bootstrap JS -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        </body>
+            <!-- Additional Features -->
+            <div class="row mt-4">
+                <div class="col-md-4 mb-3">
+                    <div class="action-card dashboard-card p-3 text-center h-100">
+                        <i class="bi bi-bar-chart text-primary" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">Analytics</h5>
+                        <p class="text-muted small">View performance metrics</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="action-card dashboard-card p-3 text-center h-100">
+                        <i class="bi bi-gear text-secondary" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">Settings</h5>
+                        <p class="text-muted small">Configure your account</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="action-card dashboard-card p-3 text-center h-100">
+                        <i class="bi bi-question-circle text-info" style="font-size: 2rem;"></i>
+                        <h5 class="mt-2">Help</h5>
+                        <p class="text-muted small">Get support and guides</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        </html>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+    </html>
