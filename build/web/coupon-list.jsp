@@ -59,9 +59,12 @@
                             }
 
                             .status-badge {
-                                font-size: 0.8em;
-                                padding: 4px 8px;
+                                font-size: 0.9em;
+                                font-weight: bold;
+                                padding: 6px 12px;
                                 border-radius: 12px;
+                                text-transform: uppercase;
+                                letter-spacing: 0.5px;
                             }
 
                             .btn-primary-custom {
@@ -214,7 +217,7 @@
                                                                                     </td>
                                                                                     <td>
                                                                                         <span
-                                                                                            class="badge bg-secondary">
+                                                                                            class="badge bg-light text-dark border">
                                                                                             <%= couponViewModel.getDiscountTypeDisplayText()
                                                                                                 %>
                                                                                         </span>
@@ -228,11 +231,32 @@
                                                                                             %>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span
-                                                                                            class="badge <%= couponViewModel.getStatusBadgeClass() %> status-badge">
-                                                                                            <%= couponViewModel.getStatusText()
-                                                                                                %>
-                                                                                        </span>
+                                                                                        <% String
+                                                                                            statusTextForStatus=couponViewModel.getStatusText().toLowerCase();
+                                                                                            String
+                                                                                            statusBadgeClass="bg-secondary text-white"
+                                                                                            ; if
+                                                                                            (statusTextForStatus.contains("valid"))
+                                                                                            {
+                                                                                            statusBadgeClass="bg-success text-white"
+                                                                                            ; } else if
+                                                                                            (statusTextForStatus.contains("expired"))
+                                                                                            {
+                                                                                            statusBadgeClass="bg-danger text-white"
+                                                                                            ; } else if
+                                                                                            (statusTextForStatus.contains("limit"))
+                                                                                            {
+                                                                                            statusBadgeClass="bg-warning text-black"
+                                                                                            ; } else if
+                                                                                            (statusTextForStatus.contains("inactive"))
+                                                                                            {
+                                                                                            statusBadgeClass="bg-secondary text-white"
+                                                                                            ; } %>
+                                                                                            <span
+                                                                                                class="badge <%= statusBadgeClass %> status-badge">
+                                                                                                <%= couponViewModel.getStatusText()
+                                                                                                    %>
+                                                                                            </span>
                                                                                     </td>
                                                                                     <td>
                                                                                         <div class="btn-group"
